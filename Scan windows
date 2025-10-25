@@ -1,0 +1,14 @@
+1. Run DISM to Restore System Health
+This command checks and restores system health using Windows Update:
+
+DISM /Online /Cleanup-Image /RestoreHealth
+
+
+- It may take several minutes.
+- Requires internet access to download healthy files if corruption is found.
+2. Run SFC to Scan and Repair System Files
+After DISM completes, run:
+sfc /scannow
+
+
+- 
