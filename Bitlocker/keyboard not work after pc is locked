@@ -1,0 +1,15 @@
+- Use bootable flash to go into repair > troubleshooting > command prompt
+- manage-bde -status
+- manage-bde -unlock C: -RecoveryPassword <your_recovery_key_here>
+- if drive C not labeled
+- diskpart
+- list volume
+- select volume (os volume ussually the largest
+- assign letter=E (any letter)
+- exit
+- manage-bde -unlock C: -RecoveryPassword <your_recovery_key_here>
+- temporaly disable bitlocker ( manage-bde -protectors -disable C:)
+- exit and restart
+- enable bitlocker once logged in
+  manage-bde -protectors -enable C:
+  or via GUI
