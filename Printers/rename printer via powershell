@@ -1,0 +1,4 @@
+- List added printers
+ get-printer
+- Rename printer via powershell
+ Rename-Printer -Name "TASKalfa 6066603i" -NewName "IT Printer"
