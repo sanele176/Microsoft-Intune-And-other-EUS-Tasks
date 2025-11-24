@@ -1,0 +1,131 @@
+⭐ STEP 1 — Create Your Visio Install XML
+Go to:
+👉 https://config.office.com
+
+1. Click Create → New Configuration
+2. Under Products and releases choose:
+
+Office Suites → Microsoft 365 Apps for enterprise
+Scroll down to Apps
+
+Select Visio (Plan 2/Volume/etc.)
+
+3. Select Architecture:
+64-bit (recommended)
+
+4. Under Language, choose:
+English (en-us) or your preferred
+
+5. Under Installation Options:
+Turn OFF Office apps you don’t want
+Keep only Visio enabled (optional)
+
+6. Export the configuration file:
+Save as:
+
+Visio-install.xml
+
+
+If you want, I can generate this file for you automatically.
+
+⭐ STEP 2 — Package the Installer for Intune
+
+You need Office Deployment Tool (ODT).
+
+Download from:
+👉 https://www.microsoft.com/en-us/download/details.aspx?id=49117
+
+Extract contents.
+
+Create a folder:
+
+C:\Visio-Intune\
+
+
+Copy into it:
+
+setup.exe
+
+Visio-install.xml
+
+Your folder should look like:
+
+C:\Visio-Intune\setup.exe
+C:\Visio-Intune\Visio-install.xml
+
+⭐ STEP 3 — Convert Folder into an Intune .intunewin Package
+
+Download IntuneWinAppUtil:
+👉 https://learn.microsoft.com/en-us/mem/intune/apps/intune-win32-apps
+
+In PowerShell or CMD:
+
+IntuneWinAppUtil.exe -c "C:\Visio-Intune" -s "setup.exe" -o "C:\Output"
+
+
+This creates:
+
+C:\Output\setup.intunewin
+
+⭐ STEP 4 — Upload to Intune
+
+Go to:
+Intune Admin Center → Apps → Windows apps → Add
+
+Choose:
+
+App type: Windows app (Win32)
+
+Upload:
+
+setup.intunewin
+
+Program settings:
+
+Install command:
+
+setup.exe /configure Visio-install.xml
+
+
+Uninstall command:
+
+setup.exe /configure Visio-uninstall.xml
+
+
+(If you want, I’ll generate the uninstall XML.)
+
+⭐ STEP 5 — Detection Rules
+
+Choose:
+
+✔ Manually configure detection rules
+
+Rule type:
+
+File or Registry
+
+Example registry detection for Visio:
+HKLM\SOFTWARE\Microsoft\Office\ClickToRun\Configuration
+Value: ProductReleaseIds
+Contains: VisioProRetail
+
+or File
+
+Path: C:\Program Files\Microsoft Office\root\Office16
+File: VISIO.EXE
+
+⭐ STEP 6 — Assign to Users / Devices
+
+Assign to:
+
+A user group with Visio licenses
+or
+
+Devices (if volume license)
+
+Deployment Mode:
+
+Required (automatic install)
+or
+
+Available (user installs from Company Portal)
