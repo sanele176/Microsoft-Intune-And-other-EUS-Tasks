@@ -1,0 +1,5 @@
+cd "C:\Program Files\SentinelOne\Sentinel Agent <version>"
+
+Uninstall the agent using the passphrase
+
+uninstall.exe /norestart /q /k="<passphrase>"
