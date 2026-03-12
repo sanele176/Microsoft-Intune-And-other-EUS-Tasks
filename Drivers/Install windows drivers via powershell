@@ -1,0 +1,10 @@
+You can install all available driver updates using PowerShell with the PSWindowsUpdate module.
+
+Run CMD as admin and execute:
+
+powershell
+Install-Module PSWindowsUpdate -Force
+Get-WindowsUpdate
+Install-WindowsUpdate -AcceptAll -AutoReboot
+
+This installs all available Windows and driver updates automatically.
