@@ -1,0 +1,3 @@
+Disable internal keyboard to use external if it has sticky keys;
+
+sc config i8042prt start= disabled
