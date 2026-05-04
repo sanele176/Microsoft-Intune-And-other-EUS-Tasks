@@ -1,0 +1,5 @@
+Storage driver
+Intel-Rapid-Storage-Technology-Driver-and-Application_0966F_WIN64_20.2.6.1025_A04_01.exe /s /e=C:\RST
+
+LAN driver
+Intel-PCIe-Ethernet-Controller-Driver_PGVDD_WIN64_2.1.5.4_A01.exe /s /drivers=C:\DellNIC
