@@ -1,0 +1,21 @@
+- Get-WinUserLanguageList
+- 
+$LangList = Get-WinUserLanguageList
+$LangList = $LangList | Where-Object LanguageTag -ne "en-GB"
+Set-WinUserLanguageList $LangList -Force
+
+If the UK keyboard still appears
+
+Run:
+
+Get-WinUserLanguageList
+
+If en-GB is gone but ENG UK still appears in the taskbar, sign out and back in (or restart).
+
+If you want to force the PC to have only US English and US keyboard, use:
+
+Set-WinUserLanguageList en-US -Force
+
+Then restart Windows:
+
+Restart-Computer
