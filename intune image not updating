@@ -1,0 +1,2 @@
+- reg delete "hklm\software\microsoft\windows\currentversion\personalizationcsp" /f
+- reg delete "hkcu\control panel\desktop" /v wallpaper /f
