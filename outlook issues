@@ -1,0 +1,10 @@
+Start Outlook in Safe Mode
+BAT
+outlook.exe /safe
+
+If deletion works in Safe Mode, an add-in is likely causing the problem.
+
+7. Run Outlook Diagnostics
+BAT
+outlook.exe /resetfolders
+outlook.exe /cleanviews
